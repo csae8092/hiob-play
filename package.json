@@ -6,7 +6,8 @@
 	"scripts": {
 		"dev": "vite dev",
 		"fetch:data": "tsx scripts/fetch_data.ts",
-		"prebuild": "npm run fetch:data",
+		"types:data": "tsx scripts/create_data_types.ts",
+		"prebuild": "npm run fetch:data && npm run types:data",
 		"build": "vite build",
 		"preview": "vite preview",
 		"prepare": "svelte-kit sync || echo ''",
@@ -36,6 +37,7 @@
 		"prettier": "^3.8.1",
 		"prettier-plugin-svelte": "^3.4.1",
 		"prettier-plugin-tailwindcss": "^0.7.2",
+		"quicktype": "^23.2.6",
 		"svelte": "^5.49.2",
 		"svelte-check": "^4.3.6",
 		"tailwind-merge": "^3.4.0",

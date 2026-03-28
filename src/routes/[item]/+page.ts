@@ -1,7 +1,7 @@
 import type { PageLoad } from './$types.js';
 import { data_mapping } from '$lib/constants.js';
 import { error } from '@sveltejs/kit';
-import type { VersesData, PassagesData, MidrashData } from '$lib/types';
+import type { VersesData, PassagesData, MidrashData } from '$lib/datatypes.js';
 
 type PayloadTypeMap = {
 	verses: VersesData;
