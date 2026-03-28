@@ -15,7 +15,7 @@
 	<h2>payload</h2>
 	<ul>
 		{#each Object.entries(data.payload as VersesData) as [key, values]}
-			<li>{key}: {values.hiob_id}</li>
+			<li>{key}: <a href={`/${data.item}/${key}`}>{values.hiob_id}</a></li>
 		{/each}
 	</ul>
 </div>
