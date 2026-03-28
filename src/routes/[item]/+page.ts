@@ -5,16 +5,25 @@ import { error } from '@sveltejs/kit';
 type DataMap = typeof data_mapping;
 type ItemKey = keyof DataMap;
 
-export const load: PageLoad = ({ params }) => {
+export const load: PageLoad = async ({ fetch, params }) => {
 	const item = params.item;
-
 	if (!(item in data_mapping)) {
 		throw error(404, 'Item not found');
 	}
 
 	const item_key: ItemKey = item as ItemKey;
+	const item_data = data_mapping[item_key];
+	const response = await fetch(`/data/${item_data.file}`);
+
+	if (!response.ok) {
+		throw error(response.status === 404 ? 404 : 500, `Data file not found: ${item_data.file}`);
+	}
+
+	const payload = await response.json();
+
 	return {
 		item,
-		...data_mapping[item_key]
+		...item_data,
+		payload
 	};
 };

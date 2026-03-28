@@ -5,10 +5,16 @@
 </script>
 
 <svelte:head>
-	<title>{ data.label }</title>
+	<title>{data.label}</title>
 </svelte:head>
 <div class="prose dark:prose-invert">
-	<h1>{ data.label } the project</h1>
+	<h1>{data.label} the project</h1>
 	<p>Slug: {data.item}</p>
 	<p>file: {data.file}</p>
+	<h2>payload</h2>
+	<ul>
+		{#each Object.entries(data.payload) as [key, values]}
+			<li>{key}: {values.verse}</li>
+		{/each}
+	</ul>
 </div>
