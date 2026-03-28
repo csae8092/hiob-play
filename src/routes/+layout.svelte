@@ -33,7 +33,7 @@
 					</a>
 				{/each}
 				{#each Object.entries(data_mapping) as [key, values]}
-					<a href={key} class="hover:text-primary">{values['label']}</a>
+					<a href={`/${key}`} class="hover:text-primary">{values['label']}</a>
 				{/each}
 			</div>
 
@@ -58,7 +58,7 @@
 						{/each}
 						{#each Object.entries(data_mapping) as [key, values]}
 							<DropdownMenu.Item>
-								<a href={key}>
+								<a href={`/${key}`}>
 									{values.label}
 								</a>
 							</DropdownMenu.Item>
