@@ -1,7 +1,7 @@
 <script lang="ts">
 	import './layout.css';
 	import favicon from '$lib/assets/favicon.svg';
-	import { app_config, main_nav } from '$lib/constants';
+	import { app_config, main_nav, data_mapping } from '$lib/constants';
 	import { SiGithub } from '@icons-pack/svelte-simple-icons';
 
 	import MyModeToggleButton from '$lib/components/my-mode-toggle-button.svelte';
@@ -32,6 +32,9 @@
 						{x.label}
 					</a>
 				{/each}
+				{#each Object.entries(data_mapping) as [key, values]}
+					<a href={key} class="hover:text-primary">{values['label']}</a>
+				{/each}
 			</div>
 
 			<div class="flex items-center gap-6">
@@ -50,6 +53,13 @@
 							<DropdownMenu.Item>
 								<a href={x.href}>
 									{x.label}
+								</a>
+							</DropdownMenu.Item>
+						{/each}
+						{#each Object.entries(data_mapping) as [key, values]}
+							<DropdownMenu.Item>
+								<a href={key}>
+									{values.label}
 								</a>
 							</DropdownMenu.Item>
 						{/each}
