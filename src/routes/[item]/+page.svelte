@@ -1,5 +1,6 @@
 <script lang="ts">
 	import type { PageProps } from './$types';
+	import type { VersesData } from '$lib/types';
 
 	let { data }: PageProps = $props();
 </script>
@@ -13,8 +14,8 @@
 	<p>file: {data.file}</p>
 	<h2>payload</h2>
 	<ul>
-		{#each Object.entries(data.payload) as [key, values]}
-			<li>{key}: {values.verse}</li>
+		{#each Object.entries(data.payload as VersesData) as [key, values]}
+			<li>{key}: {values.hiob_id}</li>
 		{/each}
 	</ul>
 </div>
