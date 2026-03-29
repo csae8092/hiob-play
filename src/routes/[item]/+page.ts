@@ -17,7 +17,7 @@ type ItemKey = keyof DataMap;
 export const load: PageLoad = async ({ fetch, params, url }) => {
 	const item = params.item;
 	const pageSize = Number(url.searchParams.get('pageSize') ?? 25);
-	const page = Number(url.searchParams.get('page') ?? 1);
+	const curPage = Number(url.searchParams.get('page') ?? 1);
 	if (!(item in data_mapping)) {
 		throw error(404, 'Item not found');
 	}
@@ -35,6 +35,6 @@ export const load: PageLoad = async ({ fetch, params, url }) => {
 	return {
 		item,
 		...item_data,
-		...paginate(rawPayload, page, pageSize)
+		...paginate(rawPayload, curPage, pageSize),
 	};
 };
